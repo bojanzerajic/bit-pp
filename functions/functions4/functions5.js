@@ -196,8 +196,32 @@
 //     }
 //     return result;
 // }
-// console.log(greatestCommonDivisor(112, 56));
 
+////////////////////////////////////////// TASK 4 //////////////////////////////////////////////////////
+
+// (skip :))Sort a previously defined array. Place its sorted values into a new array whose values are equivalent to the first array's values multiplied by 2.
+// Input: [ 13, 11, 15, 5, 6, 1, 8, 12 ]
+// Output: [ 2, 10, 12, 16, 22, 24, 26, 30 ]
+
+var ascendingDoubledArray = function (array) {
+    var newArray = [];
+
+    for (var j = 0; j < array.length; j++) {
+        var minNumber = array[0];
+        var minNumberIndex = 0;
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] < minNumber) {
+                minNumber = array[i];
+                minNumberIndex = i;
+            }
+            delete array[minNumberIndex];
+        }
+        newArray[newArray.length] = minNumber * 2;
+
+    }
+    return newArray;
+}
+console.log(ascendingDoubledArray([13, 11, 15, 5, 6, 1, 8, 12]));
 
 
 
