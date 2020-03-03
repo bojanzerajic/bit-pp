@@ -150,8 +150,27 @@
 // }
 // console.log(averagePrice(shoppingCart, totalPrice(shoppingCart)));
 
+/////////////////////////////////////// task 6 ///////////////////////////////////
 
+// Write a function that checks if a given string is written in all capitals.
+// Write a function that checks if a given string contains any digits.
+// Write a function that checks if a given string is a valid hexadecimal color.
+// Write a function that checks if a given number belongs to the interval from 1900 to 2018. 
+// Write a function named validator that returns an object with properties stringValidator, passwordValidator, colorValidator, and yearValidator referencing the functions from a) to d).
 
+var stringAllCapitals = function (string) {
+    var res = false;
+    var newString = string.toUpperCase();
+    if (newString === string) {
+        res = true;
+    }
+    return res;
+} 
+var b = "PARADISE";
+var c = "PaRaDiSe";
+console.log(stringAllCapitals(c));
+
+toString(16)
 
 
 
