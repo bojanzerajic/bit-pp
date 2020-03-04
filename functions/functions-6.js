@@ -114,4 +114,42 @@
 // }
 // console.log(filterArrayAndFindMax([10, 15, 1, 'bla', 1000, true, 66, 69, 3, 2]));
 
+/////////////////////////////////////// task 8 /////////////////////////////////
+
+// Write a function to find the maximum and minimum elements. Function returns an array.
+
+// var minAndMax = function (array) {
+//     var res = [];
+//     var sortedArray = array.sort(function (a, b) { return (a - b) });
+//     res.push(sortedArray[0]);
+//     res.push(sortedArray[sortedArray.length-1]);
+//     return res;
+
+// }
+// console.log(minAndMax([10, 200, 500, 1000, 1, 6, 9, 50]));
+
+//////////////////////////////////////////// task 9 ///////////////////////////////////
+
+///////////////////////////////////////////task 10 ///////////////////////////////////////
+
+//////////////////////////////////////// task 11 ///////////////////////////////////////////
+
+// Write a function to find and return the first, middle and last element of an array if the array has odd number of elements. If number of elements is even, return just the first and the last. In other cases (empty array), input array should be returned.
+
+// var firstMiddleLast = function (array) {
+//     var res = [];
+//     if (array.length % 2 === 0) {
+//         res.push(array[0]);
+//         res.push(array[array.length - 1]);
+//     } else {
+//         res.push(array[0]);
+//         res.push(array[(array.length - 1) / 2]);
+//         res.push(array[array.length - 1]);
+//     }
+
+//     return res;
+// }
+// console.log(firstMiddleLast([1, 2, 3, 4, 5, 6, 7]));
+
+
 
