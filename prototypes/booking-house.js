@@ -136,6 +136,7 @@
 
 
     console.log(soccerBetKladionica.fullData());
+    console.log(soccerBetklaionica);
 
 
 })();
