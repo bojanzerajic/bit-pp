@@ -18,22 +18,23 @@
         this.continent = continent;
     }
     const rs = new Country('Serbia', 1.2, CONTINENTS.EUROPE);
-    ///////////////////////////////////////////////////////////////////////////////
+    
     function Person(name, surname, dateOfBirth) {
         this.name = name;
         this.surname = surname;
         this.dateOfBirth = new Date(dateOfBirth);
     }
     Person.prototype.personInfo = function () {
-        return `${this.name}  ${this.surname}  ,  ${2020 - (this.dateOfBirth.getFullYear())}  years`;
+        return `${this.name} ${this.surname}, ${2020 - (this.dateOfBirth.getFullYear())} years`;
     }
     Person.prototype.fullData = function () {
         return `${this.name} ${this.surname}  ${this.dateOfBirth}`;
     }
     const bojan = new Person('Bojan', 'Zerajic', '1984-01-21');
     const ksenija = new Person('Ksenija', 'Mijanovic', '1993-05-13');
+    const stefan = new Person('Stefan', 'Pavlovic', '1992-02-26');
+    const uros = new Person('Uros', 'Opacic', '1994-01-30');
 
-    ///////////////////////////////////////////////////////////////////////////////////
     function Player(person, betAmount, coun) {
         this.person = person;
         this.betAmount = betAmount;
@@ -41,10 +42,12 @@
         this.money = this.betAmount * coun.odds;
     }
     Player.prototype.playerInfo = function () {
-        return `${this.country} , ${this.money} eur, ${this.person.personInfo()}`;
+        return `${this.country}, ${this.money} eur, ${this.person.personInfo()}`;
     }
     const bojanKockar = new Player(bojan, 300, rs);
     const ksenijaKockar = new Player(ksenija, 500, rs);
+    const stefanKockar = new Player(stefan, 800, rs);
+    const urosKockar = new Player(uros, 450, rs);
 
     function Address(country, city, postalCode, street, number) {
         this.country = (country.name[0] + country.name[1]).toUpperCase();
@@ -54,10 +57,11 @@
         this.number = number;
     }
     Address.prototype.fullAddress = function () {
-        return `${this.street} ${this.number} , ${this.postalCode}  ${this.city} , ${this.country}`;
+        return `${this.street} ${this.number}, ${this.postalCode} ${this.city}, ${this.country}`;
     }
-    ////////////////////////////////////////////////////////////////////////////////////////
+    
     const knezaMilosa = new Address(rs, 'Beograd', 11000, 'Kneza Milosa', 82);
+    const sarajevska = new Address(rs, 'Beograd', 11000, 'Sarajevska', 14);
 
     function BettingPlace(address) {
         this.listOfPlayers = [];
@@ -67,7 +71,7 @@
 
     BettingPlace.prototype.bettingPlaceInfo = function () {
 
-        return `${this.address.street} , ${this.address.postalCode}  ${this.address.city} , sum of all bets: ${this.totalAmount} eur`;
+        return `${this.street}, ${this.postalCode} ${this.city}, sum of all bets: ${this.totalAmount} eur`;
     }
 
     BettingPlace.prototype.addPlayer = function (player) {
@@ -75,14 +79,34 @@
         this.totalAmount += player.betAmount;
     }
 
-    const uplatnoMesto = new BettingPlace(knezaMilosa);
+    const uplatnoMestoJedan = new BettingPlace(knezaMilosa);
+    const uplatnoMestoDva = new BettingPlace(sarajevska);
 
-    uplatnoMesto.addPlayer(bojanKockar);
-    uplatnoMesto.addPlayer(ksenijaKockar);
+    uplatnoMestoJedan.addPlayer(bojanKockar);
+    uplatnoMestoJedan.addPlayer(ksenijaKockar);
+    uplatnoMestoDva.addPlayer(stefanKockar);
+    uplatnoMestoDva.addPlayer(urosKockar);
+
+    function BettingHouse(competition) {
+        this.competition = competition;
+        this.listOfBettingPlaces = [];
+        this.numberOfPlayers = 0;
+    }
+    BettingHouse.prototype.addBettingPlace = function (bettingPlace) {
+        this.listOfBettingPlaces.push(bettingPlace);
+        this.numberOfPlayers += bettingPlace.listOfPlayers.length;
+    }
+
+    BettingHouse.prototype.fullData = function () {
+        return ' ${this.competition} , ${this.listOfBettingPlaces.length} betting places, ${this.numberOfPlayers} bets ${this.listOfBettingPlaces.forEach(function(el){ return el.bettingPlaceInfo})}';
+    }
 
 
+    const soccerBetKladionica = new BettingHouse('Basketball World Cup Winner');
+    soccerBetKladionica.addBettingPlace(uplatnoMestoJedan);
+    soccerBetKladionica.addBettingPlace(uplatnoMestoDva);
 
-
+    console.log(uplatnoMestoJedan.bettingPlaceInfo());
 
 
 
