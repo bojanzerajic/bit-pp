@@ -118,10 +118,11 @@
 
     BettingHouse.prototype.fullData = function () {
         let bettingHouseString = '';
+        let numberOfBetsOnSerbia = 0;
         this.listOfBettingPlaces.forEach((place) => {
             bettingHouseString += '\n\t' + place.bettingPlaceInfo() + place.getPlayers();
         })
-        let numberOfBetsOnSerbia = 0;
+        
 
         return `${this.competition}, ${this.listOfBettingPlaces.length} betting places, ${this.numberOfPlayers} bets
         ${bettingHouseString}`;
